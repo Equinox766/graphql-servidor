@@ -1,0 +1,61 @@
+
+"""Estructura de nuevo cliente"""
+type Cliente{
+    id:  ID
+    nombre: String
+    apellido: String
+    empresa: String
+    emails: [Email]
+    tipo: TipoCliente
+    pedidos: [Pedido]
+}
+"""Estructura del email"""
+type Email {
+    email: String
+}
+"""Estructura del pedido"""
+type Pedido {
+    producto: String
+    precio: Int
+}
+"""Asigna la categoria del cliente"""
+enum TipoCliente {
+    BASICOS
+    PREMIUM
+}
+"""Te permite hacer llamados de registros"""
+type Query {
+    """Te permite llamar a todos los clientes"""
+    getClientes(limite: Int) : [Cliente]
+    """Te permite llamar a un cliente en especifico"""
+    getCliente(id: ID) : Cliente
+}
+"""Campos para crear nuevos pedidos"""
+input PedidoInput {
+    producto: String
+    precio: Int
+}
+"""Campos para crear nuevos email"""
+input EmailInput {
+    email: String
+}
+"""Campos para los clientes nuevos"""
+input ClienteInput {
+    id:  ID
+    nombre: String!
+    apellido: String!
+    empresa: String!
+    emails: [EmailInput]
+    tipo: TipoCliente!
+    pedidos: [PedidoInput]
+}
+""" Mutation para crear nuevos clientes """
+type Mutation{
+    #Nombre del resolver, Input con datos y valor que retornan
+    """Te permite crear nuevos clientes"""
+    crearCliente(input: ClienteInput) : Cliente
+    """Te permite actualizar datos de los clientes"""
+    actualizarCliente(input: ClienteInput) : Cliente
+    """Te permite eliminar datos de los clientes"""
+    elminarCliente(id: ID) : String
+}
