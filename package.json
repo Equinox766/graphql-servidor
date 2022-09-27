@@ -12,6 +12,7 @@
   "author": "Equinox",
   "license": "ISC",
   "dependencies": {
+    "apollo-server-express": "^3.10.2",
     "express": "^4.18.1",
     "express-graphql": "^0.12.0",
     "graphql": "^15.8.0",
