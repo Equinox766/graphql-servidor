@@ -20,7 +20,7 @@ type Pedido {
 }
 """Asigna la categoria del cliente"""
 enum TipoCliente {
-    BASICOS
+    BASICO
     PREMIUM
 }
 """Te permite hacer llamados de registros"""

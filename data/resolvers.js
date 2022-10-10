@@ -1,10 +1,17 @@
 import mongoose from 'mongoose';
-import { Cliente, Clientes } from './db';
+import { Clientes } from './db';
+import { rejects } from 'assert';
+
 
 export const resolvers = {
     Query: {
-        getClientes : (root, {limite}) => {
-            return Clientes.find({}).limit(limite);
+        getClientes : async (root, {limite}) => {
+            try {
+                const clientes = await Clientes.find({}).limit(limite);
+                return clientes; 
+            } catch (error) {
+                console.log(error);
+            }
         },
         getCliente : (root, {id}) => {
             return new Promise((resolve, object) => {

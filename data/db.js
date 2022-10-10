@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost/Clientes', {useNewUrlParser: true});
+mongoose.connect('mongodb://127.0.0.1/Clientes', {useNewUrlParser: true});
 
 // Definir el schema para los clientes
 const clientesSchema = new mongoose.Schema({
